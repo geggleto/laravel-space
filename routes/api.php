@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::post('/game', function (Request $request) {
+    $game = new App\Game();
+    $game->save();
+
+    return $game->toJson();
+});

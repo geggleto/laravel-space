@@ -32,6 +32,7 @@ class EventServiceProvider extends ServiceProvider
         //
 
         Game::created(function (Game $game) {
+            Log::warning("New Game Created, throwing event" . $game->id);
            event(new NewGameWasCreated($game));
         });
     }

@@ -26,5 +26,6 @@ class SetupGame
     public function handle(NewGameWasCreated $event)
     {
         $game = $event->getGame();
+        Log::warning("Handling NewGameEvent " . $game->id);
     }
 }

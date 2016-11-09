@@ -18,12 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/game', function (Request $request) {
-    $game = new App\Game();
-    $game->save();
 
-    return $game->toJson();
-});
 
 Auth::routes();
 
