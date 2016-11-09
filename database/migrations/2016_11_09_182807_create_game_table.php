@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Game extends Migration
+class CreateGameTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,6 @@ class Game extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
 
             //starting techonologies
             $table->integer('tech_ore')->default(1);
@@ -32,6 +31,10 @@ class Game extends Migration
             $table->integer('tech_hull')->default(1);
             $table->integer('tech_ship_design')->default(1);
             $table->integer('tech_evasion')->default(1);
+
+            $table->integer('status')->default(0);
+
+            $table->timestamps();
         });
     }
 

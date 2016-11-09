@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\NewGameWasCreated;
+use App\Game;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,8 +15,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        'App\Events\NewGameWasCreated' => [
+            'App\Listeners\SetupGame',
         ],
     ];
 
@@ -28,5 +30,9 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         //
+
+        Game::created(function (Game $game) {
+           event(new NewGameWasCreated($game));
+        });
     }
 }
